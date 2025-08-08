@@ -18,4 +18,7 @@ private:
     void centerOnScreen();
 
     std::unique_ptr<Ui::MainWindow> ui;
+
+private slots:
+    void onMoveWin(int distance = 10);
 };
