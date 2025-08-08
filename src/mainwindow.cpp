@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "../include/mainwindow.h"
 
 #include <QtGui/qguiapplication.h>
 #include <QtCore/QRect>

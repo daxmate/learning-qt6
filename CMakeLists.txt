@@ -14,9 +14,13 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(learning_qt6 main.cpp
-        mainwindow.cpp mainwindow.h)
-target_link_libraries(learning_qt6
+add_subdirectory(src)
+add_subdirectory(include)
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+target_link_libraries(${PROJECT_NAME}
         Qt::Core
         Qt::Gui
         Qt::Widgets
