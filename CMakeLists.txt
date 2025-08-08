@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.29)
 project(learning_qt6)
 
+add_subdirectory(src)
+add_subdirectory(include)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -14,12 +17,10 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_subdirectory(src)
-add_subdirectory(include)
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
-target_include_directories(${PROJECT_NAME} PRIVATE include)
+target_include_directories(${PROJECT_NAME} PRIVATE include ${CMAKE_BINARY_DIR}/{PROJECT_NAME}_autogen/include)
 target_link_libraries(${PROJECT_NAME}
         Qt::Core
         Qt::Gui
