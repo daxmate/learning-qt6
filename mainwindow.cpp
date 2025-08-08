@@ -17,6 +17,6 @@ void MainWindow::centerOnScreen() {
     if (const QScreen *s = screen()) {
         const QRect availableGeometry = s->availableGeometry();
         const QRect frame = frameGeometry();
-        move(frame.center() - availableGeometry.center());
+        move(availableGeometry.center() - frame.center());
     }
 }
