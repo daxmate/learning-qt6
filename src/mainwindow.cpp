@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(std::make_uniq
 
     auto connectButton = [this](const QPushButton *button, const QString &direction) {
         connect(button, &QPushButton::clicked, this, [this, direction]() {
-            onMoveWin(direction, 10);
+            onMoveWin(direction, 50);
         });
     };
     connectButton(ui->up_btn, "up");
@@ -36,11 +36,11 @@ void MainWindow::onMoveWin(const QString &direction, const int distance) {
     if (direction == "left") {
         newPos.rx() = std::max(0, newPos.x() - distance);
     } else if (direction == "right") {
-        newPos.rx() = std::min(rect.right() - width(), newPos.x() + distance);
+        newPos.rx() = std::min(rect.right() - frameGeometry().width(), newPos.x() + distance);
     } else if (direction == "up") {
         newPos.ry() = std::max(0, newPos.y() - distance);
     } else if (direction == "down") {
-        newPos.ry() = std::min(rect.bottom() - height(), newPos.y() + distance);
+        newPos.ry() = std::min(rect.bottom() - frameGeometry().height(), newPos.y() + distance);
     }
 
     move(newPos);
