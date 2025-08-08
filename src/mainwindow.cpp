@@ -4,7 +4,7 @@
 #include <QtCore/QRect>
 #include <QtGui/QScreen>
 
-MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow) {
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent),ui(std::make_unique<Ui::MainWindow>()) {
     ui->setupUi(this);
     centerOnScreen();
 }
