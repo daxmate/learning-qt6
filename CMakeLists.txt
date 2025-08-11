@@ -19,7 +19,11 @@ find_package(Qt6 REQUIRED COMPONENTS
 )
 
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_FILES})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_FILES}
+        include/mainwindow.h
+        src/mainwindow.cpp
+        include/lesson_model.h
+        src/lesson_model.cpp)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME}

@@ -1,24 +1,27 @@
-#pragma once
-#include <QMainWindow>
-#include <memory>
-#include <QAbstractButton>
+//
+// Created by 张超 on 8/11/25.
+//
 
+#ifndef LEARNING_QT6_MAINWINDOW_H
+#define LEARNING_QT6_MAINWINDOW_H
+#include "ui_mainwindow.h"
+#include "lesson_model.h"
 
 namespace Ui {
     class MainWindow;
-}
+};
 
 class MainWindow final : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
 
-    ~MainWindow() override;
+    ~MainWindow() override = default;
 
 private:
     std::unique_ptr<Ui::MainWindow> ui;
-
-private slots:
-    void onMoveWin(const QAbstractButton *directionButton, int distance = 50);
+    QSharedPointer<QStringList> lessonData;
+    LessonModel *lessonModel;
 };
+#endif //LEARNING_QT6_MAINWINDOW_H
