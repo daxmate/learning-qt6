@@ -1,6 +1,8 @@
 #pragma once
 #include <QMainWindow>
 #include <memory>
+#include <QAbstractButton>
+
 
 namespace Ui {
     class MainWindow;
@@ -15,10 +17,8 @@ public:
     ~MainWindow() override;
 
 private:
-    void centerOnScreen();
-
     std::unique_ptr<Ui::MainWindow> ui;
 
 private slots:
-    void onMoveWin(const QString &direction, int distance = 10);
+    void onMoveWin(const QAbstractButton *directionButton, int distance = 50);
 };

@@ -6,42 +6,28 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(std::make_unique<Ui::MainWindow>()) {
     ui->setupUi(this);
-    centerOnScreen();
 
-    auto connectButton = [this](const QPushButton *button, const QString &direction) {
-        connect(button, &QPushButton::clicked, this, [this, direction]() {
-            onMoveWin(direction, 50);
-        });
-    };
-    connectButton(ui->up_btn, "up");
-    connectButton(ui->down_btn, "down");
-    connectButton(ui->left_btn, "left");
-    connectButton(ui->right_btn, "right");
+    connect(ui->moveButtons, &QButtonGroup::buttonClicked, this,
+            [this](const QAbstractButton *btn) { onMoveWin(btn, 50); });
 }
 
 MainWindow::~MainWindow() = default;
 
 
-void MainWindow::centerOnScreen() {
-    if (const QScreen *s = screen()) {
-        const QRect availableGeometry = s->availableGeometry();
-        const QRect frame = frameGeometry();
-        move(availableGeometry.center() - frame.center());
-    }
-}
-
-void MainWindow::onMoveWin(const QString &direction, const int distance) {
+void MainWindow::onMoveWin(const QAbstractButton *directionButton, const int distance) {
     const auto rect = QApplication::primaryScreen()->availableGeometry();
     auto newPos = pos();
-    if (direction == "left") {
+    if (directionButton->objectName() == "leftButton") {
         newPos.rx() = std::max(0, newPos.x() - distance);
-    } else if (direction == "right") {
+    } else if (directionButton->objectName() == "rightButton") {
         newPos.rx() = std::min(rect.right() - frameGeometry().width(), newPos.x() + distance);
-    } else if (direction == "up") {
+    } else if (directionButton->objectName() == "upButton") {
         newPos.ry() = std::max(0, newPos.y() - distance);
-    } else if (direction == "down") {
+    } else if (directionButton->objectName() == "downButton") {
         newPos.ry() = std::min(rect.bottom() - frameGeometry().height(), newPos.y() + distance);
+    } else if (directionButton->objectName() == "centerButton") {
+        newPos.rx() = rect.center().x() - width() / 2;
+        newPos.ry() = rect.center().y() - height() / 2;
     }
-
     move(newPos);
 }

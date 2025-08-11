@@ -18,7 +18,7 @@
     <item>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="1">
-       <widget class="QPushButton" name="up_btn">
+       <widget class="QPushButton" name="upButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -33,14 +33,17 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>48</width>
+          <height>48</height>
          </size>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">moveButtons</string>
+        </attribute>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="left_btn">
+       <widget class="QPushButton" name="leftButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -55,14 +58,17 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>48</width>
+          <height>48</height>
          </size>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">moveButtons</string>
+        </attribute>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QPushButton" name="right_btn">
+       <widget class="QPushButton" name="rightButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -77,14 +83,17 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>48</width>
+          <height>48</height>
          </size>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">moveButtons</string>
+        </attribute>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="down_btn">
+       <widget class="QPushButton" name="downButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
@@ -99,10 +108,38 @@
         </property>
         <property name="iconSize">
          <size>
-          <width>32</width>
-          <height>32</height>
+          <width>48</width>
+          <height>48</height>
          </size>
         </property>
+        <attribute name="buttonGroup">
+         <string notr="true">moveButtons</string>
+        </attribute>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="centerButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::GoHome"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>48</width>
+          <height>48</height>
+         </size>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">moveButtons</string>
+        </attribute>
        </widget>
       </item>
      </layout>
@@ -123,4 +160,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="moveButtons"/>
+ </buttongroups>
 </ui>
