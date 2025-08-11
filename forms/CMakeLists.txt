@@ -1,0 +1,2 @@
+file(GLOB UI_FILES *.ui)
+set(UI_FILES ${UI_FILES} PARENT_SCOPE)
