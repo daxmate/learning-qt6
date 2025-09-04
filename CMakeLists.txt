@@ -2,16 +2,11 @@ cmake_minimum_required(VERSION 4.0)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(helloworld VERSION 1.0.0)
+project(learning_qt6 VERSION 1.0)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
-file(GLOB SOURCE_FILES src/*.cpp)
-
-file(GLOB HEADER_FILES include/*.h)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+file(GLOB SOURCE_FILES src/*.cpp)
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
-add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${HEADER_FILES})
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt::Core Qt::Gui Qt::Widgets)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
