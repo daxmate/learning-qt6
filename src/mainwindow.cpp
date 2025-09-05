@@ -61,7 +61,10 @@ void MainWindow::openFile()
 			setWindowTitle(fileName);
 			statusBar()->showMessage(tr("Opened file %1").arg(fileName));
 		}
+		else
+		{
+			statusBar()->showMessage(tr("Failed to open file %1").arg(fileName), 2000);
+		}
 
-		file.close();
 	}
 }
