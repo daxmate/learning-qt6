@@ -20,9 +20,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), m_posLabel(new QLa
 void MainWindow::moveEvent(QMoveEvent* event)
 {
 	QMainWindow::moveEvent(event);
-	QString posText = QString("Postion x: %1, y: %2").arg(x()).arg(y());
+	QString posText = QString(tr("Postion x: %1, y: %2")).arg(x()).arg(y());
 	m_posLabel->setText(posText);
-
 }
 
 void MainWindow::setupStatusBar()
@@ -39,8 +38,8 @@ void MainWindow::setupCentralWidget()
 
 void MainWindow::setupMenuBar()
 {
-	QMenuBar* menuBar = this->menuBar();
-	QMenu* fileMenu = menuBar->addMenu(tr("文件(&F)"));
+	QMenuBar *menuBar = this->menuBar();
+	QMenu *fileMenu = menuBar->addMenu(tr("文件(&F)"));
 	fileMenu->addAction(tr("新建"), QKeySequence::New, this, &MainWindow::newFile);
 	fileMenu->addAction(tr("打开"), QKeySequence::Open, this, &MainWindow::openFile);
 	fileMenu->addAction(tr("保存"), QKeySequence::Save, this, &MainWindow::saveFile);
@@ -48,7 +47,7 @@ void MainWindow::setupMenuBar()
 
 void MainWindow::newFile()
 {
-	QTextEdit* textEdit = qobject_cast<QTextEdit*>(this->centralWidget());
+	QTextEdit *textEdit = qobject_cast<QTextEdit*>(this->centralWidget());
 	textEdit->clear();
 	setWindowTitle(tr("新建文件"));
 	statusBar()->showMessage(tr("新建文件"), 2000);
@@ -56,8 +55,7 @@ void MainWindow::newFile()
 
 void MainWindow::openFile()
 {
-	QString filename = QFileDialog::getOpenFileName(this, tr("打开文件"),
-	                   tr("文本文件(*.txt);;所有文件(*)"));
+	QString filename = QFileDialog::getOpenFileName(this, tr("打开文件"), tr("文本文件(*.txt);;所有文件(*)"));
 
 	if(!filename.isEmpty())
 	{
