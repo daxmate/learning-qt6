@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget* parent): QMainWindow(parent),
 void MainWindow::setupWindow()
 {
 	resize(800, 600);
-	setWindowTitle("Hello Qt6");
+	setWindowTitle(tr("Hello Qt6"));
 }
 
 void MainWindow::setupCentralWidget()
@@ -31,7 +31,7 @@ void MainWindow::setupCentralWidget()
 void MainWindow::setupMenu()
 {
 	QMenuBar * menuBar = this->menuBar();
-	QMenu* fileMenu = menuBar->addMenu("&File");
+	QMenu* fileMenu = menuBar->addMenu(tr("&File"));
 	fileMenu->addAction(tr("New"),  QKeySequence::New, this, &MainWindow::newFile);
 	fileMenu->addAction(tr("Open"),  QKeySequence::Open, this, &MainWindow::openFile);
 
