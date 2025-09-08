@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), m_posLabel(new QLa
 	setupCentralWidget();
 	setupMenuBar();
 
-	statusBar()->showMessage(tr("就绪"), 3000);
+	statusBar()->showMessage(tr("ready"), 3000);
 }
 
 void MainWindow::moveEvent(QMoveEvent* event)
@@ -39,23 +39,23 @@ void MainWindow::setupCentralWidget()
 void MainWindow::setupMenuBar()
 {
 	QMenuBar *menuBar = this->menuBar();
-	QMenu *fileMenu = menuBar->addMenu(tr("文件(&F)"));
-	fileMenu->addAction(tr("新建"), QKeySequence::New, this, &MainWindow::newFile);
-	fileMenu->addAction(tr("打开"), QKeySequence::Open, this, &MainWindow::openFile);
-	fileMenu->addAction(tr("保存"), QKeySequence::Save, this, &MainWindow::saveFile);
+	QMenu *fileMenu = menuBar->addMenu(tr("File(&F)"));
+	fileMenu->addAction(tr("New"), QKeySequence::New, this, &MainWindow::newFile);
+	fileMenu->addAction(tr("Open"), QKeySequence::Open, this, &MainWindow::openFile);
+	fileMenu->addAction(tr("Save"), QKeySequence::Save, this, &MainWindow::saveFile);
 }
 
 void MainWindow::newFile()
 {
 	QTextEdit *textEdit = qobject_cast<QTextEdit*>(this->centralWidget());
 	textEdit->clear();
-	setWindowTitle(tr("新建文件"));
-	statusBar()->showMessage(tr("新建文件"), 2000);
+	setWindowTitle(tr("New file"));
+	statusBar()->showMessage(tr("New file"), 2000);
 }
 
 void MainWindow::openFile()
 {
-	QString filename = QFileDialog::getOpenFileName(this, tr("打开文件"), tr("文本文件(*.txt);;所有文件(*)"));
+	QString filename = QFileDialog::getOpenFileName(this, tr("Open file"), tr("Text files(*.txt);;All files(*)"));
 
 	if(!filename.isEmpty())
 	{
@@ -66,7 +66,7 @@ void MainWindow::openFile()
 			QTextStream in(&file);
 			m_textEdit->setPlainText(in.readAll());
 			setWindowTitle(filename);
-			statusBar()->showMessage(tr("已经打开文件: %1").arg(filename), 2000);
+			statusBar()->showMessage(tr("Opened file: %1").arg(filename), 2000);
 		}
 
 		file.close();
@@ -76,8 +76,8 @@ void MainWindow::openFile()
 void MainWindow::saveFile()
 {
 	QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-	QString filename = QFileDialog::getSaveFileName(this, tr("保存文件"), documentsPath + tr("/未命名文件.txt"),
-	                   tr("文本文件(*.txt);;所有文件(*)"));
+	QString filename = QFileDialog::getSaveFileName(this, tr("Save file"), documentsPath + tr("/untitled.txt"),
+	                   tr("Text files(*.txt);;All files(*)"));
 
 	if(!filename.isEmpty())
 	{
@@ -89,7 +89,7 @@ void MainWindow::saveFile()
 
 			out << m_textEdit->toPlainText();
 			setWindowTitle(filename);
-			statusBar()->showMessage(tr("已保存文件 %1").arg(filename), 2000);
+			statusBar()->showMessage(tr("Saved file %1").arg(filename), 2000);
 		}
 
 		file.close();
