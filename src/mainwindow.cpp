@@ -8,7 +8,7 @@
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), m_posLabel(new QLabel())
 {
-	setWindowTitle("Hello World");
+	setWindowTitle(tr("Hello World"));
 	resize(800, 600);
 	setupStatusBar();
 	setupCentralWidget();

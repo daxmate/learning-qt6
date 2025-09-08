@@ -4,6 +4,11 @@
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../src/mainwindow.cpp" line="11"/>
+        <source>Hello World</source>
+        <translation type="unfinished">你好世界</translation>
+    </message>
+    <message>
         <location filename="../src/mainwindow.cpp" line="17"/>
         <source>ready</source>
         <translation>就绪</translation>
